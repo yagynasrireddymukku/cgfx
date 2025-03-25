@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cgfx Studio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Clash+Display+Variable:wght@200..700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #121212;
+      color: white;
+      font-family: 'Clash Display Variable', sans-serif;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      background: linear-gradient(to right, #1f1f1f, #333);
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+
+    .navbar-nav .nav-link,
+    .navbar-brand {
+      color: white !important;
+    }
+
+    .navbar .navbar-nav {
+      margin: 0 auto;
+    }
+
+    .btn-theme {
+      background-color: #d7b08b;
+      color: #fff;
+      border: none;
+    }
+
+    .hero {
+      position: relative;
+    }
+
+    .carousel-item {
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .carousel-caption {
+      padding-left: 10%;
+      padding-right: 10%;
+      max-width: 600px;
+    }
+
+    .carousel-caption h1 {
+      font-size: 4rem;
+      font-weight: 800;
+    }
+
+    .carousel-caption p {
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+
+    .carousel-caption .btn {
+      padding: 0.75rem 2rem;
+      border-radius: 2rem;
+      font-weight: 500;
+      margin-top: 1.5rem;
+    }
+
+    .carousel-indicators {
+      bottom: 60px;
+    }
+
+    .carousel-indicators [data-bs-target] {
+      background-color: #fff;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .section {
+      padding: 5rem 2rem;
+    }
+
+    #about {
+      background-color: #1a1718;
+      color: #ffffff;
+    }
+
+    #about h5 {
+      background-color: #3a2f26;
+      color: #CBAC84;
+      display: inline-block;
+      padding: 0.4rem 1rem;
+      border-radius: 2rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    #about h2 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    #about p,
+    #contact p {
+      font-size: 1rem;
+      color: #cfcfcf;
+    }
+
+    #about ul {
+      padding-left: 1rem;
+      margin-top: 1rem;
+    }
+
+    #about ul li {
+      list-style: none;
+      position: relative;
+      padding-left: 1.8rem;
+      margin-bottom: 1rem;
+      color: #f3f3f3;
+      font-size: 1rem;
+    }
+
+    #about ul li::before {
+      content: "\f058";
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      color: #d7b08b;
+      position: absolute;
+      left: 0;
+      top: 2px;
+    }
+
+    #about .btn-theme {
+      margin-top: 1rem;
+      padding: 0.7rem 1.5rem;
+      font-weight: 500;
+      border-radius: 0.4rem;
+    }
+
+    .about img {
+      max-width: 100%;
+      border-radius: 1rem;
+    }
+
+    /* Services Scroll Section */
+    .scroll-container {
+      display: flex;
+      overflow: hidden;
+      gap: 20px;
+    }
+
+    .card-box {
+      background-color: #1d1a1d;
+      border-radius: 15px;
+      padding: 20px;
+      min-width: 300px;
+      max-width: 300px;
+      height: 300px;
+      flex-shrink: 0;
+      transition: transform 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .card-box:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-icon {
+      font-size: 24px;
+      background-color: #2e2b2e;
+      color: #d4a56d;
+      width: 55px;
+      height: 55px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .card-title {
+      font-weight: bold;
+      color: #d4a56d;
+      font-size: 24px;
+    }
+
+    .card-desc {
+      font-size: 16px;
+      color: #ddd;
+      margin-top: 10px;
+      word-wrap: break-word;
+      white-space: normal;
+      flex-grow: 1;
+    }
+
+    .know-more {
+      color: #d4a56d;
+      font-size: 13px;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    #contact {
+      background-color: #1a1718;
+      text-align: center;
+    }
+
+    .custom-footer {
+      background-color: #0f0f0f;
+      padding: 3rem 1rem;
+      border-top: 1px solid #333;
+      color: #bbb;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <a class="navbar-brand fw-bold" href="#">Cgfx Studio</a>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <a class="btn btn-theme" href="#">Register Now</a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <!-- (Same hero section code here) -->
+
+  <section class="hero">
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="background-image: url('assets/hero.png');">
+          <div class="carousel-caption d-flex align-items-center justify-content-start h-100">
+            <div class="text-start">
+              <h1>Animation</h1>
+              <p>Bringing ideas to life with seamless motion and dynamic storytelling.</p>
+              <a href="#" class="btn btn-theme">Know More</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('your-second-image.jpg');">
+          <div class="carousel-caption d-flex align-items-center justify-content-start h-100">
+            <div class="text-start">
+              <h1>Visual Effects</h1>
+              <p>Creating extraordinary moments with stunning digital enhancements.</p>
+              <a href="#" class="btn btn-theme">Explore</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('your-third-image.jpg');">
+          <div class="carousel-caption d-flex align-items-center justify-content-start h-100">
+            <div class="text-start">
+              <h1>CGI Modeling</h1>
+              <p>Designing lifelike models for film, games, and digital experiences.</p>
+              <a href="#" class="btn btn-theme">Learn More</a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url('your-fourth-image.jpg');">
+          <div class="carousel-caption d-flex align-items-center justify-content-start h-100">
+            <div class="text-start">
+              <h1>Motion Graphics</h1>
+              <p>Delivering impactful stories through kinetic typography and design.</p>
+              <a href="#" class="btn btn-theme">Discover</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+      </div>
+    </div>
+  </section>
+  <!-- About Section -->
+  <!-- (Same about section code here) -->
+<!-- About Section -->
+  <section id="about" class="section about d-flex align-items-center">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center">
+          <img src="assets/about.gif" alt="About CGFX">
+        </div>
+        <div class="col-md-6">
+          <h5 class="text-uppercase ">About</h5>
+          <h2>About the cgfx</h2>
+          <p>Thecgfx is a creative studio specializing in CGI, VFX, and motion graphics. We push creative and technical boundaries to deliver high-end visuals that transform ideas into stunning digital experiences.</p>
+          <ul>
+            <li><strong>Cutting-Edge Tech –</strong> We use the latest CGI and VFX innovations for stunning visuals.</li>
+            <li><strong>Precision & Collaboration –</strong> Tailored solutions that bring creative visions to life.</li>
+          </ul>
+          <a href="#" class="btn btn-theme">Register Now</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Services Auto Scroll Section -->
+  <section id="services" class="section">
+    <div class="container py-5 px-4">
+      <div class="text-center mb-4">
+        <h5 class="service-tag">Services</h5>
+        <h2 class="section-title">CGI, VFX, and motion graphics<br>for high-end visuals.</h2>
+      </div>
+      <div class="scroll-container" id="scrollCards">
+        <!-- Cards from previous code block (Rotoanim to Compositing) -->
+          <!-- Auto Scroll Cards -->
+  <div class="scroll-container" id="scrollCards">
+    <div class="card-box">
+      <div class="card-icon">RA</div>
+      <div class="card-title">Rotoanim</div>
+      <div class="card-desc">Combines rotoscoping and animation to match CG with live-action footage.</div>
+      <a href="#" class="know-more">Know More →</a>
+    </div>
+    <div class="card-box">
+      <div class="card-icon">MO</div>
+      <div class="card-title">Modeling</div>
+      <div class="card-desc">Transforms ideas into 3D digital structures for VFX and animation.</div>
+      <a href="#" class="know-more">Know More →</a>
+    </div>
+    <div class="card-box">
+      <div class="card-icon">TX</div>
+      <div class="card-title">Texture & Lookdev</div>
+      <div class="card-desc">Adds realism with textures, materials, and lighting.</div>
+      <a href="#" class="know-more">Know More →</a>
+    </div>
+    <div class="card-box">
+      <div class="card-icon">RI</div>
+      <div class="card-title">Rigging</div>
+      <div class="card-desc">Builds the skeleton and controls for 3D character movement.</div>
+      <a href="#" class="know-more">Know More →</a>
+    </div>
+    <div class="card-box">
+      <div class="card-icon">GR</div>
+      <div class="card-title">Groom</div>
+      <div class="card-desc">Creates hair and fur systems for character realism.</div>
+      <a href="#" class="know-more">Know More →</a>
+    </div>
+    <div class="card-box">
+      <div class="card-icon">LY</div>
+      <div class="card-title">Layout</div>
+      <div class="card-desc">Sets up 3D scenes, camera angles, and composition.</div>
+      <a href="#" class="know-more">Know More →</a>
+    </div>
+    <div class="card-box">
+      <div class="card-icon">DP</div>
+      <div class="card-title">DMP/3DDMP</div>
+      <div class="card-desc">Creates realistic environments by blending 2D & 3D elements.</div>
+      <a href="#" class="know-more">Know More →</a>
+    </div>
+    <div class="card-box">
+      <div class="card-icon">GX</div>
+      <div class="card-title">GFX (Technisim)</div>
+      <div class="card-desc">Simulates character FX like hair, cloth, and muscles.</div>
+      <a href="#" class="know-more">Know More →</a>
+    </div>
+    <div class="card-box">
+      <div class="card-icon">AN</div>
+      <div class="card-title">Animation</div>
+      <div class="card-desc">Brings static assets to life through timing and emotion.</div>
+      <a href="#" class="know-more">Know More →</a>
+    </div>
+    <div class="card-box">
+      <div class="card-icon">FX</div>
+      <div class="card-title">FX</div>
+      <div class="card-desc">Creates effects like fire, water, smoke, and destruction in VFX scenes.</div>
+      <a href="#" class="know-more">Know More →</a>
+    </div>
+    <div class="card-box">
+      <div class="card-icon">LT</div>
+      <div class="card-title">Lighting</div>
+      <div class="card-desc">Crafts scene lighting, shadows, and atmosphere using Unreal Engine.</div>
+      <a href="#" class="know-more">Know More →</a>
+    </div>
+    <div class="card-box">
+      <div class="card-icon">CO</div>
+      <div class="card-title">Compositing</div>
+      <div class="card-desc">Blends visual layers into a seamless final shot in VFX and film.</div>
+      <a href="#" class="know-more">Know More →</a>
+    </div>
+  </div>
+</div
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <!-- (Same contact section code here) -->
+
+  <!-- Location Section -->
+  <section id="contact" class="section location text-center">
+    <h5 class="text-uppercase">Location</h5>
+    <h2>Where We Operate</h2>
+    <p>We Are Everywhere - Online & Offline</p>
+    <div class="row mt-4">
+      <!-- Online Studios -->
+      <div class="col-md-6 d-flex flex-column align-items-center">
+        <div class="d-flex align-items-center mb-3">
+          <img src="assets/globe.png" width="20" alt="Online Icon" class="me-2">
+          <span class="fw-semibold">Online Studios</span>
+        </div>
+        <div class="d-flex align-items-start">
+          <img src="assets/location.png" width="16" alt="pin" style="margin-top: 5px; margin-right: 10px;">
+          <div class="text-start">
+            LA, USA | New York |<br>
+            Canada | UK | Europe |<br>
+            Australia
+          </div>
+        </div>
+      </div>
+      <!-- Offline Studios -->
+      <div class="col-md-6 d-flex flex-column align-items-center">
+        <div class="d-flex align-items-center mb-3">
+          <img src="assets/studios.png" width="20" alt="Offline Icon" class="me-2">
+          <span class="fw-semibold">Offline Studios</span>
+        </div>
+        <div class="d-flex align-items-start">
+          <img src="assets/location.png" width="16" alt="pin" style="margin-top: 5px; margin-right: 10px;">
+          <div class="text-start">
+            Hyderabad | Bangalore |<br>
+            Chennai | Mumbai
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Footer -->
+  <!-- (Same footer section code here) -->
+ <!-- Footer -->
+  <footer class="custom-footer">
+    <div class="container text-center">
+      <img src="assets/logo.png" alt="cgfx logo" width="80" class="mb-3">
+
+      <div class="footer-links mb-3">
+        <a href="#" class="footer-link">Home</a>
+        <a href="#about" class="footer-link">About</a>
+        <a href="#contact" class="footer-link">Contact</a>
+      </div>
+
+      <div class="footer-social mb-3">
+        <a href="#" class="footer-link"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="footer-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="footer-link"><i class="fab fa-instagram"></i></a>
+      </div>
+
+      <p class="footer-copy">&copy; 2025 theCGFX</p>
+    </div>
+  </footer>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const scrollContainer = document.getElementById("scrollCards");
+
+    function autoScroll() {
+      scrollContainer.scrollBy({ left: 1, behavior: "smooth" });
+      if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+        scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
+      }
+    }
+
+    setInterval(autoScroll, 30);
+    const scrollContainer = document.getElementById("scrollCards");
+
+  function autoScroll() {
+    scrollContainer.scrollBy({ left: 1, behavior: "smooth" });
+    if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth - scrollContainer.clientWidth) {
+      scrollContainer.scrollTo({ left: 0, behavior: "smooth" });
+    }
+  }
+
+  setInterval(autoScroll, 15); // Speed can be adjusted here
+  </script>
+</body>
+
+</html>
